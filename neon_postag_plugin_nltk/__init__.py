@@ -9,8 +9,9 @@ class NltkPosTagger(PosTagger):
         # TODO allow defining your own model
         # see https://github.com/NeonJarbas/modelhub/tree/models/models/nltk
 
-    def postag(self, tokens, lang=None):
+    def postag(self, spans, lang=None):
         lang = lang or self.lang
         # TODO need 3 lang code
         # return pos_tag(tokens, tagset="universal", lang=lang)
+        tokens = [t for (s, e, t) in spans]
         return pos_tag(tokens, tagset="universal")
