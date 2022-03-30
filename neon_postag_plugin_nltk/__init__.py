@@ -14,4 +14,6 @@ class NltkPosTagger(PosTagger):
         # TODO need 3 lang code
         # return pos_tag(tokens, tagset="universal", lang=lang)
         tokens = [t for (s, e, t) in spans]
-        return pos_tag(tokens, tagset="universal")
+        pos = pos_tag(tokens, tagset="universal")
+
+        return [(s, e, t, p) for ((t, p), (s, e, t)) in zip(pos, spans)]
